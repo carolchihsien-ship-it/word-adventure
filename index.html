@@ -4,7 +4,7 @@
 <base target="_top">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>康軒B1 L3 單字大冒險 🎮</title>
+<title>GEPT 中級｜健康飲食單字大冒險 🎮</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
@@ -82,6 +82,12 @@ button:focus-visible,input:focus-visible{outline:4px solid #6d48a5;outline-offse
 button{min-height:48px}button:disabled{opacity:.6;cursor:default}
 .title{overflow-wrap:anywhere}.score{font-size:clamp(11px,3vw,16px)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.example{font-family:'Baloo 2','Noto Sans TC',sans-serif;font-size:19px;line-height:1.6;text-align:left;background:#f2f5ff;border-left:5px solid #94b7f2;border-radius:12px;padding:14px;margin:14px 0;overflow-wrap:anywhere}
+.example mark{background:#fff0b0;color:#58416c;border-radius:4px;padding:0 3px}
+.sentence-blank{color:#8b5fa8;letter-spacing:1px;font-weight:bold}
+.wordbig{font-size:clamp(26px,7vw,38px);overflow-wrap:anywhere}
+.review-word{min-width:0;flex:1;text-align:left;margin-right:8px}
+.review-example{display:block;font-size:14px;font-weight:600;line-height:1.5;color:#685578;margin-top:6px;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -89,57 +95,357 @@ button{min-height:48px}button:disabled{opacity:.6;cursor:default}
 <script>
 /* ================= 單字資料（40 字，分成 4 組） ================= */
 var WORDS = [
-  {e:'living room', c:'客廳'},
-  {e:'bedroom', c:'臥室'},
-  {e:'bathroom', c:'浴室'},
-  {e:'dining room', c:'飯廳'},
-  {e:'behind', c:'在......後面'},
-  {e:'in front of', c:'在......前面'},
-  {e:'between', c:'在......中間'},
-  {e:'next to', c:'在......旁邊'},
-  {e:'near', c:'在......附近'},
-  {e:'please', c:'請'},
-  {e:'house', c:'房子'},
-  {e:'quiet', c:'安靜的'},
-  {e:'style', c:'風格；款式'},
-  {e:'idea', c:'想法；點子'},
-  {e:"let's...", c:'我們一起......吧'},
-  {e:'get', c:'獲得'},
-  {e:'some', c:'一些的'},
-  {e:'tool', c:'工具'},
-  {e:'smartphone', c:'智慧型手機'},
-  {e:'step', c:'步驟；一步'},
-  {e:'upload', c:'上傳'},
-  {e:'photo', c:'相片'},
-  {e:'choose', c:'選擇'},
-  {e:'type', c:'種類'},
-  {e:'theme', c:'主題'},
-  {e:'wait', c:'等待'},
-  {e:'expensive', c:'昂貴的'},
-  {e:'with', c:'對......來說；和'},
-  {e:'question', c:'問題'},
-  {e:'I see.', c:'我了解了。'},
-  {e:'soft', c:'柔軟的'},
-  {e:'hard', c:'硬的'},
-  {e:'in fact', c:'事實上'},
-  {e:'around', c:'圍繞；到處'},
-  {e:'world', c:'世界'},
-  {e:'kitchen', c:'廚房'},
-  {e:'beside', c:'在......旁邊'},
-  {e:'ice', c:'冰'},
-  {e:'inside', c:'在......裡面；在室內'},
-  {e:'blanket', c:'毛毯'}
+  {
+    "e": "fruit",
+    "c": "水果",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "fruit",
+    "sourcePage": 3,
+    "supplemental": true
+  },
+  {
+    "e": "vegetable",
+    "c": "蔬菜",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "vegetables",
+    "sourcePage": 3,
+    "supplemental": true
+  },
+  {
+    "e": "health",
+    "c": "健康",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "health",
+    "sourcePage": 3,
+    "supplemental": true
+  },
+  {
+    "e": "essential",
+    "c": "不可或缺的",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "essential",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "expert",
+    "c": "專家",
+    "sentence": "Health experts suggest eating at least five portions of fruit and vegetables a day because they bring many health benefits.",
+    "form": "experts",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "portion",
+    "c": "（食物）一份",
+    "sentence": "Health experts suggest eating at least five portions of fruit and vegetables a day because they bring many health benefits.",
+    "form": "portions",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "benefit",
+    "c": "好處",
+    "sentence": "Health experts suggest eating at least five portions of fruit and vegetables a day because they bring many health benefits.",
+    "form": "benefits",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "consume",
+    "c": "吃；攝取",
+    "sentence": "Eating more fruit and vegetables also means consuming less processed foods that are high in salt, sugar, and fat.",
+    "form": "consuming",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "processed",
+    "c": "加工的",
+    "sentence": "Eating more fruit and vegetables also means consuming less processed foods that are high in salt, sugar, and fat.",
+    "form": "processed",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "junk food",
+    "c": "垃圾食物",
+    "sentence": "If you eat a lot of junk food, start eating more fruit and vegetables today.",
+    "form": "junk food",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "fiber",
+    "c": "纖維",
+    "sentence": "The main benefit is that they contain a large amount of fiber, which helps to keep the bowels healthy.",
+    "form": "fiber",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "bowel",
+    "c": "腸",
+    "sentence": "The main benefit is that they contain a large amount of fiber, which helps to keep the bowels healthy.",
+    "form": "bowels",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "intake",
+    "c": "攝取量",
+    "sentence": "Low intake of fiber may lead to cancers of the digestive system.",
+    "form": "intake",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "digestive",
+    "c": "消化的",
+    "sentence": "Low intake of fiber may lead to cancers of the digestive system.",
+    "form": "digestive",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "lead to",
+    "c": "導致",
+    "sentence": "Low intake of fiber may lead to cancers of the digestive system.",
+    "form": "lead to",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "cholesterol",
+    "c": "膽固醇",
+    "sentence": "High fiber intake also helps to keep cholesterol and blood sugar levels steady.",
+    "form": "cholesterol",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "steady",
+    "c": "穩定的",
+    "sentence": "High fiber intake also helps to keep cholesterol and blood sugar levels steady.",
+    "form": "steady",
+    "sourcePage": 3,
+    "supplemental": false
+  },
+  {
+    "e": "blood sugar",
+    "c": "血糖",
+    "sentence": "High fiber intake also helps to keep cholesterol and blood sugar levels steady.",
+    "form": "blood sugar",
+    "sourcePage": 3,
+    "supplemental": true
+  },
+  {
+    "e": "overweight",
+    "c": "過重的",
+    "sentence": "People who consume more than five portions of fruit and vegetables are less likely to be overweight.",
+    "form": "overweight",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "diet-related",
+    "c": "飲食相關的",
+    "sentence": "It appears that the more fruit and veggies we eat, the greater protection we will have from diet-related diseases.",
+    "form": "diet-related",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "rich in",
+    "c": "富含",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "rich in",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "vitamin",
+    "c": "維他命",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "vitamins",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "mineral",
+    "c": "礦物質",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "minerals",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "nutrient",
+    "c": "營養物質",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "nutrients",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "beta-carotene",
+    "c": "β-胡蘿蔔素",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "beta-carotene",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "antioxidant",
+    "c": "抗氧化劑",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "antioxidants",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "prevent",
+    "c": "避免；預防",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "prevent",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "lessen",
+    "c": "減輕",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "lessen",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "harmful",
+    "c": "有害的",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "harmful",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "chemical",
+    "c": "化學物質",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "chemicals",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "immune system",
+    "c": "免疫系統",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "immune system",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "ward off",
+    "c": "防止；抵禦",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "ward off",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "infection",
+    "c": "感染",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "infections",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "bacterium",
+    "c": "細菌",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "bacteria",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "virus",
+    "c": "病毒",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "viruses",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "boost",
+    "c": "增強",
+    "sentence": "These nutrients also help boost our immunity.",
+    "form": "boost",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "immunity",
+    "c": "抵抗力；免疫力",
+    "sentence": "These nutrients also help boost our immunity.",
+    "form": "immunity",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "disease",
+    "c": "疾病",
+    "sentence": "It appears that the more fruit and veggies we eat, the greater protection we will have from diet-related diseases.",
+    "form": "diseases",
+    "sourcePage": 5,
+    "supplemental": true
+  },
+  {
+    "e": "in addition",
+    "c": "除此之外",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "In addition",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "It appears that",
+    "c": "看來……",
+    "sentence": "It appears that the more fruit and veggies we eat, the greater protection we will have from diet-related diseases.",
+    "form": "It appears that",
+    "sourcePage": 5,
+    "supplemental": false
+  }
 ];
 var GROUPS = [
-  {icon:'🏠', name:'房間達人', a:0,  b:10},
-  {icon:'💡', name:'創意滿分', a:10, b:20},
-  {icon:'📱', name:'數位高手', a:20, b:30},
-  {icon:'🧸', name:'柔軟世界', a:30, b:40}
+  {
+    "icon": "🥗",
+    "name": "飲食基礎",
+    "a": 0,
+    "b": 10
+  },
+  {
+    "icon": "🌾",
+    "name": "纖維與消化",
+    "a": 10,
+    "b": 20
+  },
+  {
+    "icon": "🥕",
+    "name": "營養與保護",
+    "a": 20,
+    "b": 30
+  },
+  {
+    "icon": "🛡️",
+    "name": "免疫與健康",
+    "a": 30,
+    "b": 40
+  }
 ];
 var SECTIONS = [
-  {id:'listen', n:1, name:'聽力', icon:'🎧', desc:'聽英文，選出正確中文意思', btn:'blue'},
-  {id:'spell',  n:2, name:'拼字', icon:'✏️', desc:'看中文，打出英文單字',     btn:''},
-  {id:'speak',  n:3, name:'錄音', icon:'🎤', desc:'大聲念出英文單字給電腦聽', btn:'green'}
+  {id:'listen', n:1, name:'聽力', icon:'🎧', desc:'聽例句與單字，選出中文意思', btn:'blue'},
+  {id:'spell',  n:2, name:'拼字', icon:'✏️', desc:'看中文與例句，拼出句中缺字', btn:''},
+  {id:'speak',  n:3, name:'錄音', icon:'🎤', desc:'單字錄音挑戰＋原文例句跟讀', btn:'green'}
 ];
 var PRAISE = ['太棒了！發音真棒 🌟','Perfect! 🎉','好厲害，像母語者 👏','超讚！繼續加油 💪','Brilliant! 🌈','發音好標準，老師都佩服 🎤✨','哇！單字達人就是你 🏆'];
 var PRAISE_OK = ['答對啦！🎉','好棒棒 ⭐','Excellent! 🌈','超強的 🚀','答對了，真聰明 🥳'];
@@ -181,9 +487,9 @@ function micFailUI(fb,btn,q){
 /* 後端通訊：遊戲頁放 GitHub Pages，成績 POST 回 GAS 後端（CORS: * 已實測） */
 // 老師設定：填入自己的 GAS /exec 網址；不可使用範本老師的後端。
 var SAVE_URL = "https://script.google.com/macros/s/AKfycbwDo87cQRVSWAN_HBo1W5lGlU40ZR89Km5AOOClwI-5u6sPhLDccSsgHDrq40miig/exec";
-var GAME_ID = 'word-adventure-v1';
-var GAME_TITLE = '單字大冒險';
-var CONTENT_NOTE = '示範題庫：沿用範本的 40 個生活單字';
+var GAME_ID = 'health-food-v1';
+var GAME_TITLE = 'GEPT 中級｜健康飲食單字大冒險';
+var CONTENT_NOTE = '課本第 3–5 頁：35 個單字與片語＋5 個例句單字';
 function sendScore(name, payload, uid, cb){
   if(!SAVE_URL){ cb(false,{msg:'老師尚未設定成績表連線；進度保存在本機'}); return; }
   var controller=new AbortController();
@@ -366,7 +672,7 @@ function home(){
     '<div class="card" style="text-align:center">'+
       '<span class="mascot">🐰</span>'+
       '<h1 class="title">'+esc(GAME_TITLE)+'</h1>'+
-      '<p class="sub">40 個生活單字・三大關卡<br>🎧 聽力 ✏️ 拼字 🎤 錄音，各 4 組挑戰！</p>'+
+      '<p class="sub">40 個健康飲食單字・原文例句<br>🎧 聽力 ✏️ 拼字 🎤 錄音，各 4 組挑戰！</p>'+
       '<div class="divider"></div>'+
       '<p style="text-align:center;font-weight:900;margin:4px 0">請輸入你的英文名字 👇</p>'+
       '<input class="name" id="nm" maxlength="30" aria-label="英文名字" placeholder="Amy" autocomplete="off">'+
@@ -490,6 +796,20 @@ function nextQ(){
 function goNext(){ S.i++; nextQ(); }
 
 /* ---------- 關卡一：聽力 ---------- */
+function exampleHTML(w,blank){
+  if(!w.sentence)return '';
+  var form=w.form||w.e, at=w.sentence.toLowerCase().indexOf(form.toLowerCase());
+  var text=at<0?esc(w.sentence):esc(w.sentence.slice(0,at))+
+    (blank?'<span class="sentence-blank" aria-label="填空">________</span>':'<mark>'+esc(w.sentence.slice(at,at+form.length))+'</mark>')+
+    esc(w.sentence.slice(at+form.length));
+  return '<div class="example" lang="en">'+text+'</div>';
+}
+function spellingForm(w){return w.form||w.e;}
+function wordFormNote(w){
+  if(spellNorm(spellingForm(w))===spellNorm(w.e))return '';
+  return w.e==='consume'?'本題請填入 -ing 形式':w.e==='bacterium'?'本題請填入不規則複數':'本題請填入複數形式';
+}
+function listenText(w){return w.sentence?w.sentence+' The word is: '+w.e+'.':w.e;}
 function playListen(){
   var q=S.qs[S.i], w=WORDS[q.w];
   var opts=q.opts.map(function(k,j){
@@ -498,13 +818,14 @@ function playListen(){
   go(
     '<div class="card">'+progressHTML()+
       '<div style="text-align:center"><span style="font-size:40px">🎧</span></div>'+
+      '<p class="mini">先聽例句，再聽題目單字／片語，選出它的中文意思。</p>'+
       '<div class="feedback" id="fb"></div>'+
       '<div style="text-align:center"><button class="iconbtn mic" id="play">🔊 聽一次</button></div>'+
       '<div class="grid2" style="margin-top:10px">'+opts+'</div>'+
     '</div>',
     function(){
-      later(function(){ say(w.e); },250);
-      document.getElementById('play').onclick=function(){ say(w.e); };
+      later(function(){ say(listenText(w),'en-US',0.85); },250);
+      document.getElementById('play').onclick=function(){ say(listenText(w),'en-US',0.85); };
       var bs=app.querySelectorAll('[data-o]');
       for(var i=0;i<bs.length;i++){
         bs[i].onclick=function(){
@@ -537,11 +858,12 @@ function playListen(){
 /* ---------- 關卡二：拼字 ---------- */
 function playSpell(){
   var q=S.qs[S.i], w=WORDS[q.w];
-  var target=compact(w.e);
-  var blanks=w.e.replace(/[a-z0-9]/gi,function(ch){ return (q.hint||q.tries>0)?ch:' _ '; });
+  var answer=spellingForm(w), target=compact(answer);
   go(
     '<div class="card">'+progressHTML()+
       '<div class="zhbig" style="font-size:30px">「'+esc(w.c)+'」</div>'+
+      exampleHTML(w,true)+
+      '<p class="mini">填入句子缺少的英文單字或片語。'+esc(wordFormNote(w))+'</p>'+
       '<div style="text-align:center"><span style="font-size:34px">✏️</span></div>'+
       '<input class="spell" id="sp" aria-label="輸入英文拼字" placeholder="type here..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text">'+
       '<div style="text-align:center">'+
@@ -556,38 +878,37 @@ function playSpell(){
       var inp=document.getElementById('sp'), touched=false;inp.addEventListener('input',function(){touched=true;});
       later(function(){ inp.focus(); },200);
       /* 系統先自動唸一次英文，學生聽聲音再拼字（沒動靜會再唸一次） */
-      later(function(){ say(w.e); },400);
-      later(function(){ if(!S.answered && !touched) say(w.e); },2600);
-      document.getElementById('hear').onclick=function(){ q.hint=true; say(w.e); };
+      later(function(){ say(answer); },400);
+      later(function(){ if(!S.answered && !touched) say(answer); },2600);
+      document.getElementById('hear').onclick=function(){ q.hint=true; say(answer); };
       document.getElementById('hint').onclick=function(){
         q.hint=true;
-        var vis=w.e.replace(/[a-z0-9]/gi,function(ch){ return ch; });
-        document.getElementById('bl').innerHTML='💡 提示：共 '+target.length+' 個字母，「'+esc(w.e[0])+'」開頭';
-        say(w.e);
+        document.getElementById('bl').innerHTML='💡 提示：共 '+target.length+' 個字母，「'+esc(answer[0])+'」開頭';
+        say(answer);
       };
       function check(){
         if(S.answered) return;
         var v=inp.value.trim();
         if(!v) return;
         q.tries++;
-        var okNow = spellNorm(v)===spellNorm(w.e);
+        var okNow = spellNorm(v)===spellNorm(answer);
         if(okNow){
           q.ok=true; q.firstTry=(q.tries===1 && !q.hint);
           sndRight(); confetti();
           praise(PRAISE_OK[rnd(PRAISE_OK.length)]);
-          document.getElementById('fb').innerHTML='<span class="ok">✔ 正確！'+esc(w.e)+'</span>';
-          say(w.e);
+          document.getElementById('fb').innerHTML='<span class="ok">✔ 正確！'+esc(answer)+'</span>';
+          say(answer);
           S.answered=true; later(goNext,1400);
         }else if(q.tries===1){
           sndWrong();
           document.getElementById('fb').innerHTML='<span class="no">差一點點！再試一次 💪</span>';
-          document.getElementById('bl').innerHTML='🔤 '+esc(w.e.replace(/[a-z0-9]/gi,function(c,k){
+          document.getElementById('bl').innerHTML='🔤 '+esc(answer.replace(/[a-z0-9]/gi,function(c,k){
             return (k===0)? c : ' _ ';
           }));
           inp.value=''; inp.focus();
         }else{
           q.ok=false; sndWrong();
-          document.getElementById('fb').innerHTML='<span class="no">✖ 正確拼法：'+esc(w.e)+'</span>';
+          document.getElementById('fb').innerHTML='<span class="no">✖ 正確拼法：'+esc(answer)+'</span>';
           S.answered=true; later(goNext,2200);
         }
       }
@@ -604,6 +925,9 @@ function playSpeak(){
     '<div class="card">'+progressHTML()+
       '<div class="wordbig">'+esc(w.e)+'</div>'+
       '<div class="zhbig">'+esc(w.c)+'</div>'+
+      '<p class="mini">🎤 讀出上方單字／片語。下方原文例句可先聽再跟讀。</p>'+
+      exampleHTML(w,false)+
+      '<div style="text-align:center"><button class="iconbtn" id="example">📖 聽例句並跟讀</button></div>'+
       '<div style="text-align:center">'+
         '<button class="iconbtn" id="hear">🔊 先聽一次</button>'+
         '<button class="iconbtn" id="slow">🐢 慢速聽</button>'+
@@ -615,8 +939,10 @@ function playSpeak(){
       '<button class="iconbtn" id="skip" style="width:100%">⏭ 跳過這題</button>'+
     '</div>',
     function(){
-      document.getElementById('hear').onclick=function(){ say(w.e); };
-      document.getElementById('slow').onclick=function(){ say(w.e,'en-US',0.6); };
+      function model(text,rate){q._manualPlayback=true;say(text,'en-US',rate||1);}
+      document.getElementById('example').onclick=function(){ model(w.sentence||w.e,0.8); };
+      document.getElementById('hear').onclick=function(){ model(w.e); };
+      document.getElementById('slow').onclick=function(){ model(w.e,0.6); };
       document.getElementById('skip').onclick=function(){ stopRec(); q.ok=false; q.fallback=true; q._done=true; goNext(); };
       var micBtn=document.getElementById('mic');
       micBtn.onclick=function(){ doRec(micBtn,q,w); };
@@ -624,7 +950,7 @@ function playSpeak(){
       /* 權限早已拿到 → 本題自動開始錄音，達成「只按一次、連續錄」 */
       if(MIC_STREAM){
         later(function(){
-          if(!q._done && !q._listening && document.getElementById('mic')===micBtn) doRec(micBtn,q,w);
+          if(!q._done && !q._listening && !q._manualPlayback && document.getElementById('mic')===micBtn) doRec(micBtn,q,w);
         }, 700);
       }
     }
@@ -730,7 +1056,9 @@ function groupResult(){
   var rows=g.map(function(q,j){
     return '<div style="display:flex;justify-content:space-between;align-items:center;background:'+(q.ok?'#f2fff0':'#fff5f5')+
       'border-radius:14px;padding:8px 12px;margin:4px 0;font-weight:800">'+
-      '<span>'+(j+1)+'. <b style="font-family:Baloo 2">'+esc(WORDS[q.w].e)+'</b> '+esc(WORDS[q.w].c)+'</span>'+
+      '<span class="review-word">'+(j+1)+'. <b style="font-family:Baloo 2">'+esc(WORDS[q.w].e)+'</b> '+esc(WORDS[q.w].c)+
+      (S.sec.id==='spell'&&wordFormNote(WORDS[q.w])?'<small class="review-example">句中拼字：'+esc(spellingForm(WORDS[q.w]))+'</small>':'')+
+      (WORDS[q.w].sentence?'<small class="review-example" lang="en">'+esc(WORDS[q.w].sentence)+'</small>':'')+'</span>'+
       '<span style="font-size:20px">'+(q.ok?(q.fallback?'✅ 自評':q.firstTry?'🌟':'✔'):'✖')+'</span></div>';
   }).join('');
   var msg = score>=10?'滿分！你是單字王 👑':(score>=8?'超棒的！🌟':(score>=5?'不錯喔，再加油 💪':'多練幾次就會了 🌱'));
