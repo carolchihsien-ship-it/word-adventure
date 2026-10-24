@@ -494,7 +494,10 @@ function sendScore(name, payload, uid, cb){
   if(!SAVE_URL){ cb(false,{msg:'老師尚未設定成績表連線；進度保存在本機'}); return; }
   var controller=new AbortController();
   var timeout=setTimeout(function(){controller.abort();},20000);
-  fetch(SAVE_URL, {
+  var endpoint=SAVE_URL+(SAVE_URL.indexOf('?')<0?'?':'&')+'request='+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+  fetch(endpoint, {
+    cache:'no-store',
+    credentials:'omit',
     signal:controller.signal,
     method:'POST',
     headers:{'Content-Type':'text/plain;charset=utf-8'},
