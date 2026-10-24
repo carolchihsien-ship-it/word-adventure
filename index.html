@@ -311,6 +311,11 @@ function sndWin(){ tone([523,659,784,1047],0.15); }
 function sndWrong(){ tone([220,165],0.16); }
 
 function say(text, lang, rate){
+  if(CUR_SR){
+    stopRec();
+    var current=S.qs[S.i];if(current)current._listening=false;
+    var mic=document.getElementById('mic');if(mic){mic.classList.remove('rec');mic.textContent='🎤 按我開始錄音';}
+  }
   if(!('speechSynthesis' in window)) return;
   speechSynthesis.cancel();
   var u=new SpeechSynthesisUtterance(text);
@@ -517,7 +522,7 @@ function playListen(){
             document.getElementById('fb').innerHTML='<span class="no">再想想喔～ 再聽一次 🔊</span>';
             say(w.e);
             S.answered=true;
-            setTimeout(function(){
+            later(function(){
               document.getElementById('fb').innerHTML='<span class="no">✔ 答案是 '+esc(w.c)+'</span>';
               bs[q.opts.indexOf(q.w)].classList.add('right');
             },1300);
@@ -816,6 +821,7 @@ function report(){
 
 /* ================= 啟動 ================= */
 if(window.speechSynthesis) speechSynthesis.getVoices();
+window.addEventListener('pagehide',function(){stopRec();if(MIC_STREAM){MIC_STREAM.getTracks().forEach(function(t){t.stop();});MIC_STREAM=null;}});
 document.title=GAME_TITLE+' 🎮';
 /* 手機裡有存過進度 → 直接回到上次的進度接著玩；沒有 → 顯示首頁輸入名字 */
 if(loadProgress()){menu();if(totalDone()&&!SYNC.ok)syncScore();}else{home();}
