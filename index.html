@@ -4,7 +4,7 @@
 <base target="_top">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GEPT 中級｜蔬果攝取單字大冒險 🎮</title>
+<title>GEPT 中級｜健康飲食單字大冒險 🎮</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
@@ -96,352 +96,348 @@ button{min-height:48px}button:disabled{opacity:.6;cursor:default}
 /* ================= 單字資料（40 字，分成 4 組） ================= */
 var WORDS = [
   {
-    "e": "chopped",
-    "c": "切片的",
-    "sentence": "Add chopped bananas, apples, or blueberries to morning cereals or iced soybean milk.",
-    "form": "chopped",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "omelette",
-    "c": "煎蛋捲",
-    "sentence": "If you like omelettes, toss in steamed veggies like spinach, tomatoes, mushrooms, onions, or broccoli to make your breakfast more flavorful and nutritious.",
-    "form": "omelettes",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "toss in",
-    "c": "拌入",
-    "sentence": "If you like omelettes, toss in steamed veggies like spinach, tomatoes, mushrooms, onions, or broccoli to make your breakfast more flavorful and nutritious.",
-    "form": "toss in",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "spinach",
-    "c": "菠菜",
-    "sentence": "If you like omelettes, toss in steamed veggies like spinach, tomatoes, mushrooms, onions, or broccoli to make your breakfast more flavorful and nutritious.",
-    "form": "spinach",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "mushroom",
-    "c": "蘑菇",
-    "sentence": "If you like omelettes, toss in steamed veggies like spinach, tomatoes, mushrooms, onions, or broccoli to make your breakfast more flavorful and nutritious.",
-    "form": "mushrooms",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "broccoli",
-    "c": "花椰菜",
-    "sentence": "If you like omelettes, toss in steamed veggies like spinach, tomatoes, mushrooms, onions, or broccoli to make your breakfast more flavorful and nutritious.",
-    "form": "broccoli",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "flavorful",
-    "c": "有風味的",
-    "sentence": "If you like omelettes, toss in steamed veggies like spinach, tomatoes, mushrooms, onions, or broccoli to make your breakfast more flavorful and nutritious.",
-    "form": "flavorful",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "nutritious",
-    "c": "有營養的",
-    "sentence": "If you like omelettes, toss in steamed veggies like spinach, tomatoes, mushrooms, onions, or broccoli to make your breakfast more flavorful and nutritious.",
-    "form": "nutritious",
-    "sourcePage": 10,
-    "supplemental": false
-  },
-  {
-    "e": "cereal",
-    "c": "穀類早餐；麥片",
-    "sentence": "Add chopped bananas, apples, or blueberries to morning cereals or iced soybean milk.",
-    "form": "cereals",
-    "sourcePage": 7,
+    "e": "fruit",
+    "c": "水果",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "fruit",
+    "sourcePage": 3,
     "supplemental": true
   },
   {
-    "e": "soybean milk",
-    "c": "豆漿",
-    "sentence": "Add chopped bananas, apples, or blueberries to morning cereals or iced soybean milk.",
-    "form": "soybean milk",
-    "sourcePage": 7,
+    "e": "vegetable",
+    "c": "蔬菜",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "vegetables",
+    "sourcePage": 3,
     "supplemental": true
   },
   {
-    "e": "instead of",
-    "c": "與其；而不是",
-    "sentence": "Instead of ordering a lunch meal box, why not prepare a fruit and veggie sandwich?",
-    "form": "Instead of",
-    "sourcePage": 10,
+    "e": "health",
+    "c": "健康",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "health",
+    "sourcePage": 3,
+    "supplemental": true
+  },
+  {
+    "e": "essential",
+    "c": "不可或缺的",
+    "sentence": "Fruit and vegetables are essential to our health.",
+    "form": "essential",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "slice",
-    "c": "薄片",
-    "sentence": "Add slices of cucumber, banana, tomato, and mushrooms to your toast or low-sugar bagels.",
-    "form": "slices",
-    "sourcePage": 10,
+    "e": "expert",
+    "c": "專家",
+    "sentence": "Health experts suggest eating at least five portions of fruit and vegetables a day because they bring many health benefits.",
+    "form": "experts",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "cucumber",
-    "c": "小黃瓜",
-    "sentence": "Add slices of cucumber, banana, tomato, and mushrooms to your toast or low-sugar bagels.",
-    "form": "cucumber",
-    "sourcePage": 10,
+    "e": "portion",
+    "c": "（食物）一份",
+    "sentence": "Health experts suggest eating at least five portions of fruit and vegetables a day because they bring many health benefits.",
+    "form": "portions",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "bagel",
-    "c": "貝果",
-    "sentence": "Add slices of cucumber, banana, tomato, and mushrooms to your toast or low-sugar bagels.",
-    "form": "bagels",
-    "sourcePage": 10,
+    "e": "benefit",
+    "c": "好處",
+    "sentence": "Health experts suggest eating at least five portions of fruit and vegetables a day because they bring many health benefits.",
+    "form": "benefits",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "celery",
-    "c": "芹菜",
-    "sentence": "Better still, eat carrots or celery sticks to increase your fiber intake for a healthy lunch.",
-    "form": "celery",
-    "sourcePage": 11,
+    "e": "consume",
+    "c": "吃；攝取",
+    "sentence": "Eating more fruit and vegetables also means consuming less processed foods that are high in salt, sugar, and fat.",
+    "form": "consuming",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "avocado",
-    "c": "酪梨",
-    "sentence": "For desserts, try low-fat yogurt with a piece of fruit, such as a banana, guava, or avocado.",
-    "form": "avocado",
-    "sourcePage": 11,
+    "e": "processed",
+    "c": "加工的",
+    "sentence": "Eating more fruit and vegetables also means consuming less processed foods that are high in salt, sugar, and fat.",
+    "form": "processed",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "guava",
-    "c": "芭樂",
-    "sentence": "For desserts, try low-fat yogurt with a piece of fruit, such as a banana, guava, or avocado.",
-    "form": "guava",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "snack",
-    "c": "零食",
-    "sentence": "Fruit is great for snacks.",
-    "form": "snacks",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "whole",
-    "c": "完整的；整個的",
-    "sentence": "If you love orange juice, why not eat whole oranges, which contain more fiber.",
-    "form": "whole",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "meal",
-    "c": "一餐",
-    "sentence": "Not only can fruit and vegetables provide all the nutrients you need, they can also add flavor, texture, and color to your meals.",
-    "form": "meals",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "pack with",
-    "c": "充滿",
-    "sentence": "Instead of buying processed juice, which is packed with sugar, salt, and additives, why not toss some fruit and vegetables into the blender to create your own personal smoothies powered with nutrients.",
-    "form": "packed with",
-    "sourcePage": 11,
-    "supplemental": false,
-    "formHint": "本題請填入過去分詞片語"
-  },
-  {
-    "e": "additive",
-    "c": "添加物",
-    "sentence": "Instead of buying processed juice, which is packed with sugar, salt, and additives, why not toss some fruit and vegetables into the blender to create your own personal smoothies powered with nutrients.",
-    "form": "additives",
-    "sourcePage": 11,
+    "e": "junk food",
+    "c": "垃圾食物",
+    "sentence": "If you eat a lot of junk food, start eating more fruit and vegetables today.",
+    "form": "junk food",
+    "sourcePage": 5,
     "supplemental": false
   },
   {
-    "e": "toss",
-    "c": "投入",
-    "sentence": "Instead of buying processed juice, which is packed with sugar, salt, and additives, why not toss some fruit and vegetables into the blender to create your own personal smoothies powered with nutrients.",
-    "form": "toss",
-    "sourcePage": 11,
+    "e": "fiber",
+    "c": "纖維",
+    "sentence": "The main benefit is that they contain a large amount of fiber, which helps to keep the bowels healthy.",
+    "form": "fiber",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "blender",
-    "c": "果汁機",
-    "sentence": "Instead of buying processed juice, which is packed with sugar, salt, and additives, why not toss some fruit and vegetables into the blender to create your own personal smoothies powered with nutrients.",
-    "form": "blender",
-    "sourcePage": 11,
+    "e": "bowel",
+    "c": "腸",
+    "sentence": "The main benefit is that they contain a large amount of fiber, which helps to keep the bowels healthy.",
+    "form": "bowels",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "create",
-    "c": "製造；創造",
-    "sentence": "Instead of buying processed juice, which is packed with sugar, salt, and additives, why not toss some fruit and vegetables into the blender to create your own personal smoothies powered with nutrients.",
-    "form": "create",
-    "sourcePage": 11,
+    "e": "intake",
+    "c": "攝取量",
+    "sentence": "Low intake of fiber may lead to cancers of the digestive system.",
+    "form": "intake",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "personal",
-    "c": "個人的",
-    "sentence": "Instead of buying processed juice, which is packed with sugar, salt, and additives, why not toss some fruit and vegetables into the blender to create your own personal smoothies powered with nutrients.",
-    "form": "personal",
-    "sourcePage": 11,
+    "e": "digestive",
+    "c": "消化的",
+    "sentence": "Low intake of fiber may lead to cancers of the digestive system.",
+    "form": "digestive",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "smoothie",
-    "c": "奶昔；果昔",
-    "sentence": "Instead of buying processed juice, which is packed with sugar, salt, and additives, why not toss some fruit and vegetables into the blender to create your own personal smoothies powered with nutrients.",
-    "form": "smoothies",
-    "sourcePage": 11,
+    "e": "lead to",
+    "c": "導致",
+    "sentence": "Low intake of fiber may lead to cancers of the digestive system.",
+    "form": "lead to",
+    "sourcePage": 3,
     "supplemental": false
   },
   {
-    "e": "experiment",
-    "c": "嘗試",
-    "sentence": "Experimenting with different varieties of fruit and vegetables can be a lot of fun.",
-    "form": "Experimenting",
-    "sourcePage": 11,
-    "supplemental": false,
-    "formHint": "本題請填入 -ing 形式"
+    "e": "cholesterol",
+    "c": "膽固醇",
+    "sentence": "High fiber intake also helps to keep cholesterol and blood sugar levels steady.",
+    "form": "cholesterol",
+    "sourcePage": 3,
+    "supplemental": false
   },
   {
-    "e": "mention",
-    "c": "提及",
-    "sentence": "Which of the following tips is not mentioned in this article?",
-    "form": "mentioned",
-    "sourcePage": 11,
-    "supplemental": false,
-    "formHint": "本題請填入過去分詞"
+    "e": "steady",
+    "c": "穩定的",
+    "sentence": "High fiber intake also helps to keep cholesterol and blood sugar levels steady.",
+    "form": "steady",
+    "sourcePage": 3,
+    "supplemental": false
   },
   {
-    "e": "tip",
-    "c": "訣竅；建議",
-    "sentence": "Here are five tips to help you gain your daily dose of health-sustaining foods.",
-    "form": "tips",
-    "sourcePage": 7,
+    "e": "blood sugar",
+    "c": "血糖",
+    "sentence": "High fiber intake also helps to keep cholesterol and blood sugar levels steady.",
+    "form": "blood sugar",
+    "sourcePage": 3,
     "supplemental": true
   },
   {
-    "e": "flavor",
-    "c": "風味",
-    "sentence": "Not only can fruit and vegetables provide all the nutrients you need, they can also add flavor, texture, and color to your meals.",
-    "form": "flavor",
-    "sourcePage": 7,
+    "e": "overweight",
+    "c": "過重的",
+    "sentence": "People who consume more than five portions of fruit and vegetables are less likely to be overweight.",
+    "form": "overweight",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "diet-related",
+    "c": "飲食相關的",
+    "sentence": "It appears that the more fruit and veggies we eat, the greater protection we will have from diet-related diseases.",
+    "form": "diet-related",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "rich in",
+    "c": "富含",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "rich in",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "vitamin",
+    "c": "維他命",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "vitamins",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "mineral",
+    "c": "礦物質",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "minerals",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "nutrient",
+    "c": "營養物質",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "nutrients",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "beta-carotene",
+    "c": "β-胡蘿蔔素",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "beta-carotene",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "antioxidant",
+    "c": "抗氧化劑",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "antioxidants",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "prevent",
+    "c": "避免；預防",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "prevent",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "lessen",
+    "c": "減輕",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "lessen",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "harmful",
+    "c": "有害的",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "harmful",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "chemical",
+    "c": "化學物質",
+    "sentence": "For example, vitamin C and beta-carotene, which are called antioxidants, are believed to prevent or lessen effects of damage caused by harmful chemicals.",
+    "form": "chemicals",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "immune system",
+    "c": "免疫系統",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "immune system",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "ward off",
+    "c": "防止；抵禦",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "ward off",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "infection",
+    "c": "感染",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "infections",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "bacterium",
+    "c": "細菌",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "bacteria",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "virus",
+    "c": "病毒",
+    "sentence": "A healthy immune system helps us ward off colds, flus, or infections caused by bacteria or viruses.",
+    "form": "viruses",
+    "sourcePage": 5,
+    "supplemental": false
+  },
+  {
+    "e": "boost",
+    "c": "增強",
+    "sentence": "These nutrients also help boost our immunity.",
+    "form": "boost",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "immunity",
+    "c": "抵抗力；免疫力",
+    "sentence": "These nutrients also help boost our immunity.",
+    "form": "immunity",
+    "sourcePage": 4,
+    "supplemental": false
+  },
+  {
+    "e": "disease",
+    "c": "疾病",
+    "sentence": "It appears that the more fruit and veggies we eat, the greater protection we will have from diet-related diseases.",
+    "form": "diseases",
+    "sourcePage": 5,
     "supplemental": true
   },
   {
-    "e": "texture",
-    "c": "質感；口感",
-    "sentence": "Not only can fruit and vegetables provide all the nutrients you need, they can also add flavor, texture, and color to your meals.",
-    "form": "texture",
-    "sourcePage": 7,
-    "supplemental": true
+    "e": "in addition",
+    "c": "除此之外",
+    "sentence": "In addition, they are also rich in vitamins and minerals, which are nutrients that keep our body healthy.",
+    "form": "In addition",
+    "sourcePage": 4,
+    "supplemental": false
   },
   {
-    "e": "gain",
-    "c": "獲得",
-    "sentence": "Here are five tips to help you gain your daily dose of health-sustaining foods.",
-    "form": "gain",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "dose",
-    "c": "（一次的）量",
-    "sentence": "Here are five tips to help you gain your daily dose of health-sustaining foods.",
-    "form": "dose",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "variety",
-    "c": "各式各樣；種類",
-    "sentence": "Try a variety of new alternatives which you have not noticed before.",
-    "form": "variety",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "alternative",
-    "c": "選擇；替代品",
-    "sentence": "Try a variety of new alternatives which you have not noticed before.",
-    "form": "alternatives",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "dried",
-    "c": "乾燥的",
-    "sentence": "In addition to fresh fruit, try dried or tinned fruit.",
-    "form": "dried",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "tinned",
-    "c": "罐裝的",
-    "sentence": "In addition to fresh fruit, try dried or tinned fruit.",
-    "form": "tinned",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "stir-fry",
-    "c": "快炒",
-    "sentence": "If you always stir-fry your vegetables, try steaming them or just make a bowl of salad.",
-    "form": "stir-fry",
-    "sourcePage": 7,
-    "supplemental": true
-  },
-  {
-    "e": "steam",
-    "c": "蒸煮",
-    "sentence": "If you always stir-fry your vegetables, try steaming them or just make a bowl of salad.",
-    "form": "steaming",
-    "sourcePage": 7,
-    "supplemental": true,
-    "formHint": "本題請填入 -ing 形式"
+    "e": "It appears that",
+    "c": "看來……",
+    "sentence": "It appears that the more fruit and veggies we eat, the greater protection we will have from diet-related diseases.",
+    "form": "It appears that",
+    "sourcePage": 5,
+    "supplemental": false
   }
 ];
 var GROUPS = [
   {
-    "icon": "🍳",
-    "name": "早餐好食材",
+    "icon": "🥗",
+    "name": "飲食基礎",
     "a": 0,
     "b": 10
   },
   {
-    "icon": "🥪",
-    "name": "午餐與點心",
+    "icon": "🌾",
+    "name": "纖維與消化",
     "a": 10,
     "b": 20
   },
   {
-    "icon": "🥤",
-    "name": "自製蔬果飲",
+    "icon": "🥕",
+    "name": "營養與保護",
     "a": 20,
     "b": 30
   },
   {
-    "icon": "🍊",
-    "name": "蔬果新吃法",
+    "icon": "🛡️",
+    "name": "免疫與健康",
     "a": 30,
     "b": 40
   }
@@ -491,9 +487,9 @@ function micFailUI(fb,btn,q){
 /* 後端通訊：遊戲頁放 GitHub Pages，成績 POST 回 GAS 後端（CORS: * 已實測） */
 // 老師設定：填入自己的 GAS /exec 網址；不可使用範本老師的後端。
 var SAVE_URL = "https://script.google.com/macros/s/AKfycbwDo87cQRVSWAN_HBo1W5lGlU40ZR89Km5AOOClwI-5u6sPhLDccSsgHDrq40miig/exec";
-var GAME_ID = "fruit-veggie-intake-20261108-v1";
-var GAME_TITLE = "GEPT 中級｜蔬果攝取單字大冒險";
-var CONTENT_NOTE = '增加蔬果攝取量：23 個標示單字與片語＋17 個文章單字';
+var GAME_ID = 'health-food-v1';
+var GAME_TITLE = 'GEPT 中級｜健康飲食單字大冒險';
+var CONTENT_NOTE = '課本第 3–5 頁：35 個單字與片語＋5 個例句單字';
 function sendScore(name, payload, uid, cb){
   if(!SAVE_URL){ cb(false,{msg:'老師尚未設定成績表連線；進度保存在本機'}); return; }
   var controller=new AbortController();
@@ -679,7 +675,7 @@ function home(){
     '<div class="card" style="text-align:center">'+
       '<span class="mascot">🐰</span>'+
       '<h1 class="title">'+esc(GAME_TITLE)+'</h1>'+
-      '<p class="sub">40 個蔬果攝取單字・原文例句<br>🎧 聽力 ✏️ 拼字 🎤 錄音，各 4 組挑戰！</p>'+
+      '<p class="sub">40 個健康飲食單字・原文例句<br>🎧 聽力 ✏️ 拼字 🎤 錄音，各 4 組挑戰！</p>'+
       '<div class="divider"></div>'+
       '<p style="text-align:center;font-weight:900;margin:4px 0">請輸入你的英文名字 👇</p>'+
       '<input class="name" id="nm" maxlength="30" aria-label="英文名字" placeholder="Amy" autocomplete="off">'+
