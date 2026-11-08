@@ -1,7 +1,10 @@
 # 單字大冒險專案指示
 
 ## 固定架構
-- 前端只有 `index.html`，部署 GitHub Pages，HTTPS 頂層頁面使用麥克風。
+- 每份題庫以單一 `index.html` 部署 GitHub Pages，HTTPS 頂層頁面使用麥克風；維持原有 Pages＋GAS 架構。
+- 健康飲食舊網址：專案根目錄 index.html，https://carolchihsien-ship-it.github.io/word-adventure/ 。
+- 蔬果攝取新網址：fruit-veggie/index.html，https://carolchihsien-ship-it.github.io/word-adventure/fruit-veggie/ 。更新任一題庫不可覆寫另一份題庫頁面。
+- gas/QuizCatalog.gs 以白名單 GAME_ID 分流單字表與成績分頁；content/update-catalog.cjs 由兩份來源 JSON 重建目錄。不得用單一預設題庫拒絕另一個仍在使用的網址。
 - 後端 `gas/Code.gs` 以 GAS Web App 寫 Google Sheets；不改成 GAS iframe 遊戲、代理伺服器或其他託管架構。
 - `doGet` 用 HtmlService 導向 PAGES_URL，保留可點擊連結作為自動導頁受阻時的備援。
 - POST 使用 `text/plain;charset=utf-8`，免 CORS 預檢。TextOutput 沒有 setHeader；跨域回應由 Google 服務提供，部署後必須從 Pages 實測，不得假造成功或以 no-cors opaque 回應判定成功。
@@ -12,7 +15,7 @@
 - `content/fruit-veggie-vocabulary.json` 保存完整對照；`content/build-fruit-veggie.cjs` 可重建題庫資料，不重建介面邏輯。
 - 分組：🍳早餐好食材、🥪午餐與點心、🥤自製蔬果飲、🍊蔬果新吃法，各十題。
 - GAME_ID=fruit-veggie-intake-20261108-v1；成績寫入同一本試算表的「蔬果攝取40字_20261108」工作表，保留健康飲食40字成績及其他舊工作表。
-- 舊題庫來源 content/health-vocabulary.json 與建置器 build-health.cjs 供復原；不要把舊建置器當成現行更新指令。更新前快照在 Codex/archive/health-food-v1。
+- 健康飲食題庫也持續上線：來源 content/health-vocabulary.json，建置器 content/build-health.cjs 更新根目錄頁面；蔬果攝取建置器只更新 fruit-veggie/index.html。兩個建置器完成後都更新 QuizCatalog.gs。歷史快照在 Codex/archive/health-food-v1。
 - 三關：聽力四選一、中文拼英文、SpeechRecognition 錄音。
 - 拼字 400ms 自動朗讀，2600ms 尚未輸入再朗讀，取消舊畫面計時器。
 - 拼字比對忽略大小寫、頭尾空白與連續空白；保留詞間空白與標點，不能將 livingroom 視為 living room。
@@ -41,11 +44,13 @@
 1. 編輯 content/build-fruit-veggie.cjs 或 index.html 題庫、GAME_TITLE；更換題庫時 GAME_ID 與後端 GAME_ID、WORDS_JSON 同步更新，另建工作表（SHEET_NAME）以避免版本混用。單字原形 e、句中答案 form、formHint、sentence 與來源頁碼須一起維護。
 2. `node tests/check.cjs`：抽出 script 檢查語法並產生 gas/words.json，測試後端合併與最高分。
 3. `node tests/browser.cjs`：需 playwright 與 Edge；手機流程測試，辨識服務以模擬驗證，實際手機仍需實測麥克風。
-   `node tests/fruit-veggie.cjs`：核對 23＋17 題、16 句、40 個挖空、字形答案與提示、題庫版本隔離與手機版面。tests/health.cjs 僅適用舊健康飲食題庫。
+   `node tests/fruit-veggie.cjs`：驗證新網址的 23＋17 題、16 句、字形答案與手機版面。`node tests/health.cjs` 驗證舊網址的健康飲食題庫。`node tests/catalog.cjs` 驗證同一學生跨題庫分數／錯誤清單分開保存。
 4. `clasp push -f`；更新時 `clasp deploy --deploymentId <既有ID>`，不可每次建立新 ID。
 5. `gh api` contents PUT，攜帶既有 sha 及 base64，使用 `--input` JSON 檔；不可覆寫其他專案。
 6. Pages 上線後，測遊戲 HTTP 200、實際跨域 POST ok:true，以及同紀錄ID第二次 msg=已更新。記錄驗證日期、網址與結果。
+   雙網址驗證：node tests/live-both.cjs，兩個頁面都須通過，並檢查後端回應 gameId、sheetName 與不同測試分數，確定沒有寫錯分頁。
 7. 真正網址確認後才產生 QR.png；未部署不能提供假網址或假 QR。
+   QR.png 保持連到根目錄健康飲食題庫；QR-fruit-veggie.png 連到新的蔬果攝取網址，不覆蓋舊 QR。
 
 ## 來源與保護
 - 原始成功範本：https://sharlicwu.github.io/word-link-game/ ，保存在 reference.html；不得將其 SAVE_URL 當作老師後端。
