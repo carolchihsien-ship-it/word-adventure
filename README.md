@@ -1,16 +1,15 @@
-# 單字大冒險：兩份練習
+# 單字大冒險：三份練習
 
 | 題庫 | 遊戲網址 | 內容 |
 |---|---|---|
-| 健康飲食（原網址） | [開始練習](https://carolchihsien-ship-it.github.io/word-adventure/) | 40 個單字／片語、13 句例句 |
-| 蔬果攝取（新網址） | [開始練習](https://carolchihsien-ship-it.github.io/word-adventure/fruit-veggie/) | 40 個單字／片語、16 句例句 |
+| 健康飲食 | [開始練習](https://carolchihsien-ship-it.github.io/word-adventure/) | 40 項單字／片語、13 句例句 |
+| 蔬果攝取 | [開始練習](https://carolchihsien-ship-it.github.io/word-adventure/fruit-veggie/) | 40 項單字／片語、16 句例句 |
+| 預算內買蔬果（第三份） | [開始練習](https://carolchihsien-ship-it.github.io/word-adventure/budget-shopping/) | 40 項單字／片語、19 句例句 |
 
-兩份練習均保留聽力、拼字、錄音與自動存成績。成績依題庫分開保存，原有成績不刪除。原 QR 繼續連到健康飲食；蔬果攝取使用新的網址與獨立 QR。
+每份保留聽力、拼字、錄音與自動存成績。題庫、進度及成績各自保存，不覆蓋其他練習。每次提供新教材，新增獨立網址與 QR，保留所有舊練習供平日複習。
 
-- 🎧 聽力：聽例句與目標詞，四選一選中文。
-- ✏️ 拼字：看中文與原文挖空，依句中正確字形作答。
-- 🎤 錄音：念單字／片語辨識計分，例句另外聆聽與跟讀。
+第三份取自使用者提供的課本書信及單字頁：32 個標示詞＋8 個同篇書信單字，四組為校園與生活、精打細算、保鮮與當季、特價尋寶。Ph.D. 接受常見 PhD 拼字與明確語音別名。
 
-前端維持 GitHub Pages，每份題庫為獨立的 index.html；後端維持同一 Google Apps Script，以題庫版本選擇正確的成績分頁與字表。管理設定與後端原始碼保留在老師本機，不公開內部資源識別碼。
+錄音辨識針對單字／片語計分，原文例句提供聆聽與跟讀。請使用支援語音辨識的手機瀏覽器直接開啟 HTTPS 網址；不支援可自評。
 
-介面基於使用者提供的[成功範本](https://sharlicwu.github.io/word-link-game/)。
+維持 GitHub Pages 單頁前端與 GAS 後端架構。老師端設定與後端程式保存在老師本機，不公開管理資訊。介面基於使用者提供的[成功範本](https://sharlicwu.github.io/word-link-game/)。
