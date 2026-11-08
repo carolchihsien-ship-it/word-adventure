@@ -7,16 +7,18 @@
 - POST 使用 `text/plain;charset=utf-8`，免 CORS 預檢。TextOutput 沒有 setHeader；跨域回應由 Google 服務提供，部署後必須從 Pages 實測，不得假造成功或以 no-cors opaque 回應判定成功。
 
 ## 題庫與玩法
-- 題庫 WORDS 40 字，GROUPS 4 組，各 10 字；目前是附件課本第 3–5 頁的健康飲食題庫。
-- 35 個照片標示單字／片語，加上使用者同意的 fruit、vegetable、health、blood sugar、disease，合計 40 項，搭配 13 句原文。
-- `content/health-vocabulary.json` 保存完整對照；`content/build-health.cjs` 可重建題庫資料，不重建介面邏輯。
-- 分組：🥗飲食基礎、🌾纖維與消化、🥕營養與保護、🛡️免疫與健康，各十題。
-- GAME_ID=health-food-v1；成績寫入同一本試算表的「健康飲食40字成績」工作表，保留舊版工作表。
+- 題庫 WORDS 40 字，GROUPS 4 組，各 10 字；目前是 2026-11-08 附件「增加水果與蔬菜攝取量的五種方法」（英文 p7、詞彙 p10–11、中文 p12）。
+- 23 個詞彙頁標示單字／片語，加上同篇文章的 17 項，合計 40 項，搭配 16 句原文；只使用完整可辨識的附件內容。
+- `content/fruit-veggie-vocabulary.json` 保存完整對照；`content/build-fruit-veggie.cjs` 可重建題庫資料，不重建介面邏輯。
+- 分組：🍳早餐好食材、🥪午餐與點心、🥤自製蔬果飲、🍊蔬果新吃法，各十題。
+- GAME_ID=fruit-veggie-intake-20261108-v1；成績寫入同一本試算表的「蔬果攝取40字_20261108」工作表，保留健康飲食40字成績及其他舊工作表。
+- 舊題庫來源 content/health-vocabulary.json 與建置器 build-health.cjs 供復原；不要把舊建置器當成現行更新指令。更新前快照在 Codex/archive/health-food-v1。
 - 三關：聽力四選一、中文拼英文、SpeechRecognition 錄音。
 - 拼字 400ms 自動朗讀，2600ms 尚未輸入再朗讀，取消舊畫面計時器。
 - 拼字比對忽略大小寫、頭尾空白與連續空白；保留詞間空白與標點，不能將 livingroom 視為 living room。
 - 聽力朗讀完整例句後以 The word is 指出題目單字；不先顯示英文答案。
 - 拼字顯示原句挖空，依 `form` 判斷答案（例如 experts、bacteria、consuming），而非一律使用字典原形；變化字形要顯示複數／不規則複數／-ing 提示。
+- 個別詞的 formHint 優先於通用提示；packed with、mentioned 必須提示過去分詞，Experimenting、steaming 必須提示 -ing，不能一律標成複數。
 - 錄音關維持單字／片語辨識計分；提供整句朗讀與跟讀練習，不宣稱整句發音已評分。先聽範例時取消預定自動開錄，避免電腦聲音被當成學生答案。
 - 拼字輸入必須保留 autocomplete=off、autocorrect=off、autocapitalize=off、spellcheck=false。
 - 錄音首次按鍵取得 getUserMedia 並保留串流；之後各題自動錄音。瀏覽器仍掌握權限政策，不得保證所有裝置永不再問。
@@ -36,10 +38,10 @@
 - 不上傳錄音檔，只傳分數、單字索引與自評標記；分數屬學生自助練習用途，前端不是防作弊考試系統。
 
 ## 更新與驗證
-1. 編輯 content/build-health.cjs 或 index.html 題庫、GAME_TITLE；更換題庫時 GAME_ID 與後端 GAME_ID、WORDS_JSON 同步更新，另建工作表（SHEET_NAME）以避免版本混用。單字原形 e、句中答案 form、sentence 與來源頁碼須一起維護。
+1. 編輯 content/build-fruit-veggie.cjs 或 index.html 題庫、GAME_TITLE；更換題庫時 GAME_ID 與後端 GAME_ID、WORDS_JSON 同步更新，另建工作表（SHEET_NAME）以避免版本混用。單字原形 e、句中答案 form、formHint、sentence 與來源頁碼須一起維護。
 2. `node tests/check.cjs`：抽出 script 檢查語法並產生 gas/words.json，測試後端合併與最高分。
 3. `node tests/browser.cjs`：需 playwright 與 Edge；手機流程測試，辨識服務以模擬驗證，實際手機仍需實測麥克風。
-   `node tests/health.cjs`：核對 35＋5 題、13 句、40 個挖空、字形答案、題庫版本隔離與手機版面。
+   `node tests/fruit-veggie.cjs`：核對 23＋17 題、16 句、40 個挖空、字形答案與提示、題庫版本隔離與手機版面。tests/health.cjs 僅適用舊健康飲食題庫。
 4. `clasp push -f`；更新時 `clasp deploy --deploymentId <既有ID>`，不可每次建立新 ID。
 5. `gh api` contents PUT，攜帶既有 sha 及 base64，使用 `--input` JSON 檔；不可覆寫其他專案。
 6. Pages 上線後，測遊戲 HTTP 200、實際跨域 POST ok:true，以及同紀錄ID第二次 msg=已更新。記錄驗證日期、網址與結果。
